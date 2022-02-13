@@ -5,7 +5,7 @@ import { Button, Input, Tooltip } from 'antd';
 
 import { LoginOutlined } from '@ant-design/icons';
 import { ControlOutlined } from '@ant-design/icons';
-import RegularSeparator from './RegularSeparator';
+import RegularSeparator from '../separators/RegularSeparator';
 
 import { useHistory, Link } from 'react-router-dom';
 

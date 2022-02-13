@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Spin } from 'antd';
-import Header from '../components/Header'
-import MainNews from '../components/MainNews';
-import NewsCard from '../components/NewsCard';
+import Header from '../components/layout/Header';
+import MainNews from '../components/news/MainNews';
+import NewsCard from '../components/news/NewsCard';
 import InfiniteScroll from 'react-infinite-scroller';
-import LineSeparator from '../components/LineSeparator';
+import LineSeparator from '../components/separators/LineSeparator';
 import IdleTimerContainer from '../components/IdleTimerContainer';
 import { useHistory } from 'react-router-dom'
-import Footer from '../components/Footer'
+import Footer from '../components/layout/Footer'
 
 const Home = (props) => {
 
