@@ -23,9 +23,9 @@ const MainNews = (props) => {
       //DESDE SEGUNDA NOTICIA A CUARTA
       const news = filterBeetwen(1, 4, data)
 
-      return news.map((x, idx) => (
+      return news.map((currentNew, index) => (
          <Link
-            key={idx} style={{
+            key={index} style={{
             ...styles.littleNewsContainer,
             ...isMediumSize && {
                width: '50%',
@@ -35,9 +35,9 @@ const MainNews = (props) => {
                width: '100%',
                height: 150
             }
-         }} to={`news/${x.uuid}`}>
-            <span style={{ ...styles.title, ...{ fontSize: 16 } }}>{x.title.substr(0, 50)}...</span>
-            <img style={styles.littleImgContainer} src={x.thread.main_image} alt="News"/>
+         }} to={`news/${currentNew.uuid}`}>
+            <span style={{ ...styles.title, ...{ fontSize: 16 } }}>{currentNew.title.substr(0, 50)}...</span>
+            <img style={styles.littleImgContainer} src={currentNew.thread.main_image} alt="News"/>
          </Link>
       ))
 

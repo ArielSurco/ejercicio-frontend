@@ -1,10 +1,15 @@
 export const NewsCardStyles = {
-    dateText: {
-        position: "absolute",
-        bottom: 0,
-        right: 20,
-        fontWeight: "bold"
-     }
+   image: {
+      width: "100%",
+      height: "100%",
+      objectFit: "cover"
+  },
+   dateText: {
+      position: "absolute",
+      bottom: 0,
+      right: 20,
+      fontWeight: "bold"
+   }
 }
 
 export const MainNewsStyles = {
