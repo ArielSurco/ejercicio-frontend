@@ -1,7 +1,7 @@
 import React from 'react'
-
 import PropTypes from 'prop-types'
 import { Form, Radio, Select } from 'antd';
+
 const { Option } = Select;
 
 const FilterForm = (props) => {
