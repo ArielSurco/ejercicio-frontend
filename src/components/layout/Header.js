@@ -1,33 +1,26 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Input, Tooltip } from 'antd';
-
-
 import { LoginOutlined } from '@ant-design/icons';
 import { ControlOutlined } from '@ant-design/icons';
-import RegularSeparator from './RegularSeparator';
-
-import { useHistory, Link } from 'react-router-dom';
+import RegularSeparator from '../separators/RegularSeparator';
+import { useLogin } from '../../hooks/useLogin';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
+const showSearcher = (searcher) => searcher !== null && searcher !== undefined ? searcher : true;
 
 const Header = (props) => {
-  const searcherShow = props.searcher !== null && props.searcher !== undefined ? props.searcher : true;
+   const { logout } = useLogin();
+   
+   const searcher = showSearcher(props.searcher);
+   const [filterModalVisible, setFilterModalVisible] = useState(false)
 
-const [filterModalVisible, setFilterModalVisible] = useState(false)
-
-   let history = useHistory();
-
-   const logout = () => {
-      localStorage.removeItem('logged')
-      history.push('/')
-   }
-const searcher = searcherShow;
    return (
-      <div style={props.style} className={'header-container'}>
-         <div className={'header-content'}>
-            <Link to={`/home`} className={'logo-button'}>
-               <img alt={'logo'} height={"100%"} src={"https://i.ya-webdesign.com/images/news-transparent-white-1.png"}/>
+      <div style={props.style} className='header-container'>
+         <div className='header-content'>
+            <Link to='/home' className='logo-button'>
+               <img alt='logo' height="100%" src="https://i.ya-webdesign.com/images/news-transparent-white-1.png"/>
             </Link>
 
             {
@@ -36,7 +29,7 @@ const searcher = searcherShow;
                   <Search
                      placeholder="Buscar"
                      onSearch={value => props.onSearch(value)}
-                     size={"large"}
+                     size="large"
                   />
 
                   <RegularSeparator/>
@@ -45,7 +38,7 @@ const searcher = searcherShow;
 
             {
                props.title &&
-                  <span className={'header-title'}>{props.title}</span>
+                  <span className='header-title'>{props.title}</span>
             }
 
             <Button
@@ -60,7 +53,7 @@ const searcher = searcherShow;
                }
                size={40}
             >
-               <span className={'sesion-button-txt'}>Cerrar sesión</span>
+               <span className='sesion-button-txt'>Cerrar sesión</span>
             </Button>
          </div>
       </div>

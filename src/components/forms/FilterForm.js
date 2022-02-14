@@ -1,7 +1,7 @@
 import React from 'react'
-
 import PropTypes from 'prop-types'
 import { Form, Radio, Select } from 'antd';
+
 const { Option } = Select;
 
 const FilterForm = (props) => {
@@ -12,7 +12,7 @@ const FilterForm = (props) => {
    return (
       <Form
          style={style}
-         layout={'vertical'}
+         layout='vertical'
          form={form}
          onValuesChange={() => onChangeValue(form.getFieldsValue())}
       >

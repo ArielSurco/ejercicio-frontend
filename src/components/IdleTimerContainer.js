@@ -4,12 +4,14 @@ import PropTypes from 'prop-types'
 import IdleTimer from 'react-idle-timer'
 import { useHistory } from 'react-router-dom';
 import { notification } from 'antd';
+import { useLogin } from '../hooks/useLogin';
 
 const IdleTimerContainer = (props) => {
 
    const idleTimerRef = useRef(null)
 
    let history = useHistory();
+   const { logout } = useLogin();
 
    const onIdle = () => {
          notification['warning']({
@@ -18,8 +20,8 @@ const IdleTimerContainer = (props) => {
             description:
                'Su sesión ha expirado por superar el tiempo de inactividad. Inicie sesión nuevamente',
          })
-
-      localStorage.removeItem('logged') // Eliminamos variable logged para cerrar sesión
+         
+      logout()
       history.push('/')
    }
 
