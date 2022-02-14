@@ -1,28 +1,25 @@
 import React from 'react';
 import NewsCard from "./NewsCard";
+import { NewsCardStyles } from './newsStyles';
 
 const NewsList = (props) => {
     const { news } = props;
 
-    return news.map((x, idx) => (
+    return news.map((currentNew, index) => (
         <NewsCard
-            key={idx}
+            key={index}
             style={{ marginBottom: 2, height: 450 }}
-            id={x.uuid}
+            id={currentNew.uuid}
             img={
                 <img
-                alt={"News"}
-                style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover"
-                }}
-                src={x.thread.main_image}
+                alt="News"
+                style={NewsCardStyles.image}
+                src={currentNew.thread.main_image}
                 />
             }
-            title={x.title}
-            description={x.text}
-            published={x.published}
+            title={currentNew.title}
+            description={currentNew.text}
+            published={currentNew.published}
         />
     ))
 }

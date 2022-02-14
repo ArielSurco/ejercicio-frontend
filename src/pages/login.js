@@ -7,19 +7,17 @@ import { useLogin } from '../hooks/useLogin'
 const Login = (props) => {
 
    const { style } = props
-   const { login, isLogged } = useLogin();
-   const [rememberUserNews] = useState(JSON.parse(localStorage.getItem('rememberUserNews')))
-
-   const logged = isLogged();
+   const { login, logged } = useLogin();
+   const rememberUserNews = JSON.parse(localStorage.getItem('rememberUserNews'))
 
    let history = useHistory()
 
    useEffect(() => {
       logged && history.push("/home")
-   }, [logged])
+   }, [logged, history])
 
    return (
-      <div style={style} className={"login-container"}>
+      <div style={style} className="login-container">
          <h1 style={{ marginBottom: 40 }}>NOTICIAS COVID-19</h1>
          <LoginForm
             submit={login}

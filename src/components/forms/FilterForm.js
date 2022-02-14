@@ -12,7 +12,7 @@ const FilterForm = (props) => {
    return (
       <Form
          style={style}
-         layout={'vertical'}
+         layout='vertical'
          form={form}
          onValuesChange={() => onChangeValue(form.getFieldsValue())}
       >
