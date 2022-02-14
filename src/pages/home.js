@@ -55,7 +55,7 @@ const Home = (props) => {
 
    return (
       loading ?
-   <div className={"spin-container"}>
+   <div className="spin-container">
       <Spin size="large"/>
    </div>
          :
@@ -66,7 +66,7 @@ const Home = (props) => {
                onSearch={(value) => _onSearch(value)}
             />
 
-      <div className={"body-home"}>
+      <div className="body-home">
          {
             numberOfNews > 0 && (
                <div>
@@ -74,19 +74,19 @@ const Home = (props) => {
                      data={filteredData} //Datos a renderizar (unicamente primeros 5)
                   />
 
-                  <LineSeparator size={'small'}/>
+                  <LineSeparator size='small'/>
 
                   {
                      numberOfNews > 5 ?
                         <div>
                            <h2>Más Noticias</h2>
                            <InfiniteScroll
-                              className={"news-container"}
+                              className="news-container"
                               key={0}
                               pageStart={0}
                               loadMore={() => setNewsToShow(newsToShow + 10)}
                               hasMore={newsToShow <= filteredData.length}
-                              loader={<div className={"spin-loader-more-container"}><Spin size="large"/></div>}
+                              loader={<div className="spin-loader-more-container"><Spin size="large"/></div>}
                            >
                               {
                                  renderNews()

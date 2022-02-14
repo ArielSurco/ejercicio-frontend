@@ -6,7 +6,7 @@ import Home from './pages/home';
 function App() {
    return (
       <Router>
-         <div className={"container"}>
+         <div className="container">
             <Route path="/" exact component={Login}/>
             <Route path="/home" component={Home}/>
          </div>

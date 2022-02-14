@@ -19,7 +19,7 @@ const Login = (props) => {
    }, [logged])
 
    return (
-      <div style={style} className={"login-container"}>
+      <div style={style} className="login-container">
          <h1 style={{ marginBottom: 40 }}>NOTICIAS COVID-19</h1>
          <LoginForm
             submit={login}

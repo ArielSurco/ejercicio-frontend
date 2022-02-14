@@ -37,7 +37,7 @@ const MainNews = (props) => {
             }
          }} to={`news/${x.uuid}`}>
             <span style={{ ...styles.title, ...{ fontSize: 16 } }}>{x.title.substr(0, 50)}...</span>
-            <img style={styles.littleImgContainer} src={x.thread.main_image} alt={"News"}/>
+            <img style={styles.littleImgContainer} src={x.thread.main_image} alt="News"/>
          </Link>
       ))
 
@@ -52,7 +52,7 @@ const MainNews = (props) => {
                height: 300
             }
          }}>
-            <img style={styles.bigNewsImg} src={data[0].thread.main_image} alt={"News"}/>
+            <img style={styles.bigNewsImg} src={data[0].thread.main_image} alt="News"/>
             <span style={{ ...styles.title, ...{ fontSize: 18 } }}>{data[0].title}</span>
          </Link>
          <div style={{

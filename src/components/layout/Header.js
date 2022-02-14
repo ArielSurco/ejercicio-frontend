@@ -17,10 +17,10 @@ const Header = (props) => {
    const [filterModalVisible, setFilterModalVisible] = useState(false)
 
    return (
-      <div style={props.style} className={'header-container'}>
-         <div className={'header-content'}>
-            <Link to={`/home`} className={'logo-button'}>
-               <img alt={'logo'} height={"100%"} src={"https://i.ya-webdesign.com/images/news-transparent-white-1.png"}/>
+      <div style={props.style} className='header-container'>
+         <div className='header-content'>
+            <Link to='/home' className='logo-button'>
+               <img alt='logo' height="100%" src="https://i.ya-webdesign.com/images/news-transparent-white-1.png"/>
             </Link>
 
             {
@@ -29,7 +29,7 @@ const Header = (props) => {
                   <Search
                      placeholder="Buscar"
                      onSearch={value => props.onSearch(value)}
-                     size={"large"}
+                     size="large"
                   />
 
                   <RegularSeparator/>
@@ -38,7 +38,7 @@ const Header = (props) => {
 
             {
                props.title &&
-                  <span className={'header-title'}>{props.title}</span>
+                  <span className='header-title'>{props.title}</span>
             }
 
             <Button
@@ -53,7 +53,7 @@ const Header = (props) => {
                }
                size={40}
             >
-               <span className={'sesion-button-txt'}>Cerrar sesión</span>
+               <span className='sesion-button-txt'>Cerrar sesión</span>
             </Button>
          </div>
       </div>

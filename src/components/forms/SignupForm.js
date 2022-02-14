@@ -41,7 +41,7 @@ const SignupForm = (props) => {
       <Form
          {...formItemLayout}
          style={style}
-         className={"signup-form"}
+         className="signup-form"
          name="register"
          onFinish={(values) => submit(values)}
          scrollToFirstError
