@@ -11,6 +11,7 @@ import { orderByRelevance } from '../utils/sortData';
 import { getPosts } from '../services/newsService';
 import { filterBeetwen, filterByTextOrTitle } from '../utils/filterData';
 import NewsList from '../components/news/NewsList';
+import { useLogin } from '../hooks/useLogin';
 
 const Home = (props) => {
 
@@ -20,7 +21,7 @@ const Home = (props) => {
    const [filteredData, setFilteredData] = useState([])
    const [newsToShow, setNewsToShow] = useState(10)
    const [loading, setLoading] = useState(true)
-   const logged = JSON.parse(localStorage.getItem('logged')) || false
+   const { logged } = useLogin();
    const history = useHistory()
 
    useEffect(() => {
