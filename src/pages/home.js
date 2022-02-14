@@ -7,7 +7,7 @@ import LineSeparator from '../components/separators/LineSeparator';
 import IdleTimerContainer from '../components/IdleTimerContainer';
 import { useHistory } from 'react-router-dom'
 import Footer from '../components/layout/Footer'
-import { orderByRelevance } from '../utils/orderData';
+import { orderByRelevance } from '../utils/sortData';
 import { getPosts } from '../services/newsService';
 import { filterBeetwen, filterByTextOrTitle } from '../utils/filterData';
 import NewsList from '../components/news/NewsList';
