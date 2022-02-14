@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { Spin } from 'antd';
 import Header from '../components/layout/Header';
 import MainNews from '../components/news/MainNews';
-import NewsCard from '../components/news/NewsCard';
 import InfiniteScroll from 'react-infinite-scroller';
 import LineSeparator from '../components/separators/LineSeparator';
 import IdleTimerContainer from '../components/IdleTimerContainer';
 import { useHistory } from 'react-router-dom'
 import Footer from '../components/layout/Footer'
+import { orderByRelevance } from '../utils/sortData';
+import { getPosts } from '../services/newsService';
+import { filterBeetwen, filterByTextOrTitle } from '../utils/filterData';
+import NewsList from '../components/news/NewsList';
 
 const Home = (props) => {
 
@@ -23,63 +25,29 @@ const Home = (props) => {
 
    useEffect(() => {
       if (logged) {
-         // Mediante llamada axios obtenemos data de la Api
-         axios.get('http://webhose.io/filterWebContent?token=4380d378-8fbc-4fab-9d96-ca4984f7d1fd&format=json&sort=crawled&q=coronavirus%20casos%20positivos%20%20language%3Aspanish%20thread.country%3AAR')
-            .then(res => {
-               let data = res.data.posts //Guardamos posts en constante data
-
+         getPosts()
+            .then(data => {
                // Ordenamos data por relevancia
-               const orderedData = data.sort(function (a, b) {
-                  return (b.thread.domain_rank - a.thread.domain_rank)
-               })
-
+               const orderedData = orderByRelevance(data);
                setData(orderedData) //Guardamos data original en estado
                setFilteredData(orderedData)
                setLoading(false)
-            }).catch(err => {
-            console.log(err)
-         })
+            })
       } else {
          history.push("/")
       }
-
    }, [history, logged])
 
    // Render de Noticias
    function renderNews() {
-
       //Retornamos resto de noticias obviando primeras 5. newsToShow irá aumentando al realizar scroll
-
-      const news = filteredData.filter((x, idx) => (idx > 4 && idx <= newsToShow))
-
-      return news.map((x, idx) => (<NewsCard
-               key={idx}
-               style={{ marginBottom: 2, height: 450 }}
-               id={x.uuid}
-               img={
-                  <img
-                     alt={"News"}
-                     style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover"
-                     }}
-                     src={x.thread.main_image}
-                  />
-               }
-               title={x.title}
-               description={x.text}
-               published={x.published}
-            />
-         )
-      )
+      const news = filterBeetwen(5, newsToShow, filteredData);
+      return <NewsList news={news}/>
    }
 
    function _onSearch(value) {
-
       //Filtramos por título y texto
-      let newData = data.filter(x => (x.title.includes(value) || x.text.includes(value)))
-
+      let newData = filterByTextOrTitle(data, value)
       setFilteredData(newData)
    }
 

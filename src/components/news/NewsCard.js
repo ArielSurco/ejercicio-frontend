@@ -3,6 +3,7 @@ import { Card, Tooltip } from 'antd';
 import PropTypes from 'prop-types'
 import moment from 'moment'
 import { Link } from 'react-router-dom';
+import { NewsCardStyles as styles } from './newsStyles';
 
 const { Meta } = Card;
 
@@ -29,15 +30,6 @@ const NewsCard = (props) => {
          </Link>
       </Tooltip>
    )
-}
-
-const styles = {
-   dateText: {
-      position: "absolute",
-      bottom: 0,
-      right: 20,
-      fontWeight: "bold"
-   }
 }
 
 export default NewsCard
